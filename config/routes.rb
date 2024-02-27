@@ -22,6 +22,8 @@ Rails.application.routes.draw do
 
   # # localhost:3000/users/1
   # delete '/users/:id', to: 'users#destroy'
+  get 'web/bootstrap'
+
   scope '/' do
     post 'login', to: 'sessions#create'
   end
