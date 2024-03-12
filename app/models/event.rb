@@ -7,12 +7,12 @@ class Event < ApplicationRecord
   
   validate :start_date_time_cannot_be_in_past, :end_date_time_cannot_be_before_start_date_time
 
-  belongs_to :user
+  belongs_to :creator, class_name: "User", foreign_key: "user_id"
   has_one :location, as: :locationable, dependent: :destroy
   has_many :comments, as: :commentable, dependent: :destroy
   
   has_many :event_participants
-  has_many :users, through: :event_participants
+  has_many :participants, through: :event_participants, source: :user
 
   has_and_belongs_to_many :sports
 

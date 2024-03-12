@@ -27,8 +27,10 @@ Rails.application.routes.draw do
   scope '/' do
     post 'login', to: 'sessions#create'
   end
-
-  resources :events
+  resources :events do
+    post 'join', to: 'events#join'
+    delete 'leave', to: 'events#leave'
+  end
   scope :profiles do
     get ':username', to: 'profiles#show'
   end
