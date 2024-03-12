@@ -32,4 +32,8 @@ class Event < ApplicationRecord
     # url helpers
     rails_blob_url(self.cover_image, only_path: false) if self.cover_image.attached?
   end
+
+  def has_joined?(user)
+    self.participants.include?(user)
+  end
 end
