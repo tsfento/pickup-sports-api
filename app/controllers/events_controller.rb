@@ -67,7 +67,7 @@ class EventsController < ApplicationController
 
         event.participants.delete(@current_user)
 
-        Pusher.trigger(event.creator.id, 'notifications', {
+        Pusher.trigger(event.creator.id, 'notification', {
             event_id: event.id,
             notification: "#{@current_user.username} has left #{event.title}!"
         })
